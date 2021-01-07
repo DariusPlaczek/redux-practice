@@ -1,21 +1,31 @@
-import React, { Component } from "react";
+import React from "react";
+import { connect } from 'react-redux';
+import { inc, del } from './redux';
 
-class CounterContainer extends Component {
-  state = {
-    count: 0
+function CounterContainer(props) {
+  const { countValue, addValue, decValue, delValue } = props;
+  return (
+    <div className="container">
+      <h2>Counter: {countValue} </h2>
+      <button onClick={() => addValue()}>Add</button>
+      <button onClick={() => decValue()}>Subtract</button>
+      <button onClick={() => delValue()}>Reset</button>
+    </div>
+  );
+}
+
+function mapStateToProps(state) {
+  return {
+    countValue: state.count
   };
-  add = () => {
-    this.setState(prevState => ({ count: prevState.count + 1 }));
-  };
-  render() {
-    const { count } = this.state;
-    return (
-      <div className="container">
-        <h2>Counter: {count} </h2>
-        <button onClick={this.add}>Add</button>
-      </div>
-    );
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    addValue: () => dispatch(inc()),
+    decValue: () => dispatch({type: 'counter/COUNTER_DEC'}),
+    delValue: () => dispatch(del()),
   }
 }
 
-export default CounterContainer;
+export default connect(mapStateToProps, mapDispatchToProps)(CounterContainer);

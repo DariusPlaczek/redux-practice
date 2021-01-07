@@ -3,16 +3,12 @@ import { Provider } from 'react-redux';
 
 import { createStore } from 'redux'
 import Counter from './components/Counter'
-import reducer, { inc, dec, del } from './components/redux'
+import reducer from './components/redux'
+//import reducer, { inc, dec, del } from './components/redux'
 import './App.css';
 
-
 const store = createStore(reducer)
-store.subscribe(() => console.log(store.getState()))
 
-store.dispatch(inc());
-store.dispatch(inc());
-store.dispatch(del());
 
 function App() {
   return (

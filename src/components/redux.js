@@ -19,7 +19,7 @@ export const del = () => ({
 });
 
 const INITIAL_STATE = {
-    count: 1
+    count: 9
 }
 
 export default function reducer(state = INITIAL_STATE, action) {
@@ -29,7 +29,7 @@ export default function reducer(state = INITIAL_STATE, action) {
         case COUNTER_DEC:
             return {...state, count: state.count - 1}
         case COUNTER_DEL:
-            return {...state, count: 1 }
+            return {...state, count: 9 }
         default:
             return state
     }
