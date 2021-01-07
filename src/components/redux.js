@@ -4,7 +4,7 @@ const COUNTER_DEL = 'counter/COUNTER_DEL';
 
 export function inc() {
     return{
-        type: COUNTER_INC,
+        type: COUNTER_INC
     }
 }
 
@@ -19,17 +19,17 @@ export const del = () => ({
 });
 
 const INITIAL_STATE = {
-    count: 0
+    count: 1
 }
 
-export function reducer(state = INITIAL_STATE, action) {
+export default function reducer(state = INITIAL_STATE, action) {
     switch (action.type) {
         case COUNTER_INC:
             return {...state, count: state.count + 1}
         case COUNTER_DEC:
             return {...state, count: state.count - 1}
         case COUNTER_DEL:
-            return {...state, count: 0 }
+            return {...state, count: 1 }
         default:
             return state
     }
