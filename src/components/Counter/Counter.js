@@ -16,7 +16,7 @@ function CounterContainer(props) {
 
 function mapStateToProps(state) {
   return {
-    countValue: state.count
+    countValue: state.counter.count
   };
 }
 
